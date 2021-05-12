@@ -1,6 +1,5 @@
 FROM python:3.6-slim
 
-ARG AIRFLOW_VERSION=2.0.0
 ARG AIRFLOW_HOME=/usr/local/airflow
 ENV SLUGIFY_USES_TEXT_UNIDECODE=yes
 
@@ -33,7 +32,7 @@ RUN set -ex \
     /usr/share/doc \
     /usr/share/doc-base
 
-RUN pip install apache-airflow==${AIRFLOW_VERSION}
+RUN pip install apache-airflow==1.10.12 --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-1.10.12/constraints-3.6.txt"
 ADD . /
 RUN pip install -e .
 

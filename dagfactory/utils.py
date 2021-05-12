@@ -27,7 +27,7 @@ def get_datetime(
     try:
         local_tz: pendulum.timezone = pendulum.timezone(timezone)
     except Exception as err:
-        raise "Failed to create timezone" from err
+        raise Exception("Failed to create timezone") from err
     if isinstance(date_value, datetime):
         return date_value.replace(tzinfo=local_tz)
     if isinstance(date_value, date):
